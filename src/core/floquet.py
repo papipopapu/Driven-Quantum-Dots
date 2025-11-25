@@ -406,5 +406,5 @@ def get_P_mono(alpha, beta, vecs, N, Nw):
     for n in np.arange(-Nw, Nw+1):
         for gamma_k1k2 in np.arange(Ntot):
             P += np.abs(vecs[idx_mono(beta, n, N, Nw), gamma_k1k2] * 
-                       np.conj(vecs[idx(alpha, 0, 0, N, Nw), gamma_k1k2]))**2
+                       np.conj(vecs[idx_mono(alpha, 0, N, Nw), gamma_k1k2]))**2
     return P

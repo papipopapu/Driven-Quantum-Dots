@@ -29,15 +29,20 @@ from .hamiltonian import (
     Space,
 )
 
-from .quantum_dots import (
-    f_destroy,
-    f_create,
-    eqdot_state,
-    get_Lambda,
-    get_Liouville,
-    red_H_idx,
-    red_H,
-)
+# qutip es una dependencia opcional
+try:
+    from .quantum_dots import (
+        f_destroy,
+        f_create,
+        eqdot_state,
+        get_Lambda,
+        get_Liouville,
+        red_H_idx,
+        red_H,
+    )
+    _HAS_QUTIP = True
+except ImportError:
+    _HAS_QUTIP = False
 
 __all__ = [
     # floquet
@@ -57,12 +62,16 @@ __all__ = [
     'conjugate',
     'calc_Hamiltonian',
     'Space',
-    # quantum_dots
-    'f_destroy',
-    'f_create',
-    'eqdot_state',
-    'get_Lambda',
-    'get_Liouville',
-    'red_H_idx',
-    'red_H',
 ]
+
+# Añadir exports de quantum_dots solo si qutip está disponible
+if _HAS_QUTIP:
+    __all__.extend([
+        'f_destroy',
+        'f_create',
+        'eqdot_state',
+        'get_Lambda',
+        'get_Liouville',
+        'red_H_idx',
+        'red_H',
+    ])

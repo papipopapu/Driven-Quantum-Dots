@@ -56,7 +56,7 @@ class c_internal:
         Retorna el operador conjugado hermítico (c↔c†).
     """
     
-    def __init__(self, create: bool = False, site: Dict = {'spin':'up', 'site':'down'}):
+    def __init__(self, create: bool = False, site: Dict = None):
         """
         Inicializa un operador fermiónico.
         
@@ -68,7 +68,7 @@ class c_internal:
             Números cuánticos del sitio (default: {'spin':'up', 'site':'down'}).
         """
         self.create = create
-        self.site = site
+        self.site = site if site is not None else {'spin': 'up', 'site': 'down'}
     
     def d(self):
         """

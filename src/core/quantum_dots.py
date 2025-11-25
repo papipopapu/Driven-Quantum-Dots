@@ -278,6 +278,8 @@ def red_H(H, states):
     
     for i in range(N):
         for j in range(N):
-            H_red[i, j] = (states[i].dag() * H * states[j])
+            # Extract scalar value from QuTiP Qobj result
+            result = states[i].dag() * H * states[j]
+            H_red[i, j] = result.full()[0, 0] if hasattr(result, 'full') else result
     
     return H_red

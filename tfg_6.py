@@ -1,3 +1,14 @@
+"""
+Transformación de Schrieffer-Wolff con acoplamientos dependientes del tiempo.
+
+Extensión de tfg_5.py que incluye términos de acoplamiento que dependen
+de la frecuencia de excitación (V2 y V4), necesarios para el análisis
+de excitación bicromática.
+
+Incluye cálculos simbólicos de los elementos del Hamiltoniano de Floquet
+en el espacio extendido con índices (α, n₂, n₄).
+"""
+
 from hamiltonian import *
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor, apart
 import numpy as np

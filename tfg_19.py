@@ -1,3 +1,19 @@
+"""
+Versión final de cálculo de frecuencias de Rabi bicromático.
+
+Este script es similar a tfg_16.py pero con mejoras en el cálculo
+del desplazamiento de Bloch-Siegert. Calcula la frecuencia de Rabi
+completa incluyendo tanto el elemento off-diagonal como la diferencia
+de energías diagonales:
+
+Ω_Rabi = 2 * sqrt((Δ/2)² + |V_12|²)
+
+donde Δ = E_1 - E_2 es la diferencia de energías efectivas
+(incluyendo Bloch-Siegert) y V_12 es el acoplamiento efectivo.
+
+Genera gráficos de alta calidad para la memoria del TFG.
+"""
+
 import numpy as np
 from numpy import conjugate as co
 import numba as nb

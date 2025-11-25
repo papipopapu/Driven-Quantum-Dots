@@ -1,4 +1,25 @@
-# ground truth
+"""
+Barrido de frecuencias para excitación monocromática con P4.
+
+Este script realiza un barrido sistemático de la frecuencia de excitación
+para encontrar las resonancias de Rabi en un punto cuántico doble.
+
+Metodología:
+-----------
+1. Para cada frecuencia f4 en el rango especificado:
+   - Construir el Hamiltoniano dependiente del tiempo H(t) = H0 + V4*cos(w4*t)
+   - Resolver la ecuación de Schrödinger con QuTiP (fsesolve)
+   - Medir la probabilidad máxima de transición
+   - Extraer la frecuencia de Rabi mediante análisis espectral
+
+2. Generar gráficos de:
+   - Probabilidad máxima vs frecuencia de excitación
+   - Frecuencia de Rabi vs frecuencia de excitación
+
+Las resonancias aparecen como picos donde la probabilidad máxima se
+acerca a 1 y la frecuencia de Rabi es máxima.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import qutip as qt

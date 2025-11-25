@@ -1,3 +1,21 @@
+"""
+Cálculo numérico de frecuencias de Rabi con parámetros experimentales.
+
+Este script sustituye valores numéricos (basados en experimentos de
+puntos cuánticos en Si/SiGe) en las expresiones simbólicas de
+Schrieffer-Wolff para obtener predicciones de frecuencias de Rabi.
+
+Incluye tanto los términos de segundo orden (bQ1P4_0, bQ1P4_1) como
+los de tercer orden (bbQ1P4_0, bbQ1P4_1) para comparar la precisión
+de las diferentes aproximaciones.
+
+Los valores numéricos corresponden a:
+- Parámetros de acoplamiento túnel: t, Ω
+- Interacción de Coulomb: U, ε
+- Splitting Zeeman: ω_z, δω_z
+- Amplitud de excitación: ε_{P2}, ε_{P4}
+"""
+
 from hamiltonian import *
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor, apart
 import sympy as sp

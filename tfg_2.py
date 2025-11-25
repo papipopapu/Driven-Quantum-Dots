@@ -1,3 +1,21 @@
+"""
+Comparación de evolución temporal: QuTiP vs Floquet bicromático.
+
+Este script compara la evolución temporal de un punto cuántico doble
+calculada de tres maneras:
+1. Integración directa con QuTiP (mesolve) - sin driving
+2. Integración directa con QuTiP (mesolve) - con driving bicromático
+3. Formalismo de Floquet bicromático
+
+El sistema es excitado con dos frecuencias (w1, w2) que satisfacen
+condiciones de resonancia para inducir transiciones entre estados.
+
+Referencia física:
+-----------------
+Las resonancias ocurren cuando n1*w1 ± n2*w2 ≈ ε_excit, donde ε_excit
+es la diferencia de energía entre estados del sistema no perturbado.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import qutip as qt

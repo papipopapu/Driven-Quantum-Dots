@@ -1,3 +1,13 @@
+"""
+Visualización de resultados: mapas de calor de frecuencias de Rabi.
+
+Este script carga datos pre-calculados de frecuencias de Rabi y genera
+mapas de calor 2D mostrando la dependencia con los parámetros g-TMR
+(w_z4 y dw_z4).
+
+Los datos se generan en tfg_15.py (monocromático) y tfg_16.py (bicromático).
+"""
+
 import numpy as np
 from numpy import conjugate as co
 import numba as nb

@@ -1,3 +1,17 @@
+"""
+Cálculos simbólicos adicionales de Schrieffer-Wolff.
+
+Este script calcula correcciones de segundo orden para las diagonales
+del Hamiltoniano efectivo (desplazamientos de energía), complementando
+los cálculos off-diagonal de los scripts anteriores.
+
+Los términos D1, D2, D10, D20 corresponden a las correcciones de
+energía para los estados relevantes en las transiciones Q1 y Q1_.
+
+Estas correcciones son importantes para calcular el desplazamiento
+de Bloch-Siegert de forma analítica.
+"""
+
 from hamiltonian import *
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor, apart
 import sympy as sp

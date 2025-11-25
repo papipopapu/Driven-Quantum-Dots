@@ -1,4 +1,10 @@
-# ground truth
+"""
+Barrido de frecuencias para excitación monocromática con P2.
+
+Similar a tfg_14.py pero usando la modulación P2 (plunger 2) en lugar de P4.
+Útil para comparar las resonancias inducidas por diferentes gates.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import qutip as qt

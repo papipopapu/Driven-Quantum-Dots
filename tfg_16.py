@@ -1,3 +1,25 @@
+"""
+Cálculo de frecuencias de Rabi con pymablock (excitación bicromática).
+
+Este script extiende el análisis de tfg_15.py al caso bicromático,
+donde el sistema es excitado con dos frecuencias (w2, w4) que satisfacen
+condiciones de resonancia de la forma n1*w2 + n2*w4 = ε_resonancia.
+
+Transiciones estudiadas:
+-----------------------
+- Q1^{-P2,P4}: n2*w4 - n1*w2 = f_Q1 (frecuencia de resonancia Q1)
+- Q1^{P2,P4}: n1*w2 + n2*w4 = f_Q1
+
+Se compara el caso con y sin g-TMR para analizar su efecto en
+las frecuencias de Rabi y el desplazamiento de Bloch-Siegert.
+
+Salida:
+------
+- Gráficos de frecuencia de Rabi vs frecuencia f4
+- Gráficos de Bloch-Siegert shift vs frecuencia f4
+- Mapas de calor 2D de frecuencia de Rabi vs (w_z4, dw_z4)
+"""
+
 import numpy as np
 from numpy import conjugate as co
 import numba as nb

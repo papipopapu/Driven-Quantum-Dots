@@ -1,3 +1,25 @@
+"""
+Transformación de Schrieffer-Wolff simbólica.
+
+Este script implementa la transformación de Schrieffer-Wolff de forma
+simbólica usando SymPy para obtener expresiones analíticas del
+Hamiltoniano efectivo.
+
+Metodología:
+-----------
+La transformación de Schrieffer-Wolff es una técnica perturbativa que
+proyecta un Hamiltoniano a un subespacio de baja energía eliminando
+los acoplamientos con estados de alta energía.
+
+Para el Hamiltoniano H = H_A + H_B + V, donde H_A actúa en el subespacio A
+y H_B en el subespacio B, el Hamiltoniano efectivo hasta segundo orden es:
+
+H_eff = H_A + (1/2) Σ_l [V_{al} V_{la} (1/(E_a - E_l) + 1/(E_a' - E_l))]
+
+Este script calcula las correcciones al Hamiltoniano de 4 estados (spin)
+debido al acoplamiento con los 2 estados de carga (reservorio).
+"""
+
 from hamiltonian import *
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor
 import numpy as np

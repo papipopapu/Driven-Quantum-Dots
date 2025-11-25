@@ -1,3 +1,24 @@
+"""
+Optimización de parámetros g-TMR para reproducir datos experimentales.
+
+Este script utiliza scipy.optimize para encontrar los valores de
+w_z4 y dw_z4 que reproducen mejor las frecuencias de Rabi observadas
+experimentalmente.
+
+Metodología:
+-----------
+1. Definir función objetivo que calcula la diferencia entre
+   frecuencias de Rabi calculadas y experimentales
+2. Usar optimización (Nelder-Mead o basinhopping) para minimizar
+   la función objetivo
+3. Los parámetros óptimos indican qué valores de g-TMR son
+   consistentes con los datos experimentales
+
+Datos experimentales de referencia:
+- Frecuencias de Rabi para transiciones Q1 y Q1_
+- Diferentes resonancias mono y bicromáticas
+"""
+
 import numpy as np
 from numpy import conjugate as co
 import numba as nb

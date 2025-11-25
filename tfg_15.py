@@ -1,3 +1,27 @@
+"""
+Cálculo de frecuencias de Rabi con pymablock (excitación monocromática).
+
+Este script utiliza la librería pymablock para realizar diagonalización
+perturbativa de bloques del Hamiltoniano de Floquet. Esto permite calcular
+las frecuencias de Rabi y el desplazamiento de Bloch-Siegert de forma eficiente.
+
+Metodología:
+-----------
+1. Construir el Hamiltoniano de Floquet monocromático
+2. Identificar los estados relevantes (subespacio de resonancia)
+3. Aplicar transformación de Schrieffer-Wolff para obtener Hamiltoniano efectivo 2x2
+4. Extraer frecuencia de Rabi y Bloch-Siegert shift de los elementos de matriz
+
+Las transiciones estudiadas son:
+- Q1^{P4}: Transición del estado 3 al 0 con fotón en modo -1
+- Q1_^{P4}: Transición del estado 1 al 2 con fotón en modo -1
+
+Parámetros g-TMR:
+----------------
+Se estudia el efecto de la modulación del tensor g (g-TMR) mediante
+los parámetros w_z4 y dw_z4 en la matriz de acoplamiento V4.
+"""
+
 import numpy as np
 from numpy import conjugate as co
 import numba as nb

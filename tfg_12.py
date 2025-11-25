@@ -1,4 +1,16 @@
-# interaction picture + unitary transform, probability of being in ground state matches the one in tfg_9.py (como deberia ser)
+"""
+Picture de interacción + transformación unitaria (versión corregida).
+
+Este script implementa correctamente la transformación al picture de
+interacción para excitación periódica, reproduciendo los resultados
+de tfg_9.py.
+
+La transformación elimina la dependencia temporal rápida del Hamiltoniano,
+dejando solo los términos de acoplamiento en el picture rotante.
+
+Útil para verificar la consistencia de las aproximaciones y para
+desarrollar intuición física sobre las transiciones.
+"""
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,8 +18,7 @@ import qutip as qt
 import numba as nb
 from numpy import conjugate as co
 from scipy.linalg import expm
-# import bessel functions
-from scipy.special import jv
+from scipy.special import jv  # Funciones de Bessel
 
 # units in 2pi * GHz, so timescale is 1ns
 G_R = 0 * 2*np.pi

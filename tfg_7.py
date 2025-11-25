@@ -1,3 +1,14 @@
+"""
+Análisis perturbativo de tercer orden con g-TMR.
+
+Este script calcula las correcciones de tercer orden en la transformación
+de Schrieffer-Wolff, incluyendo los efectos de g-TMR (g-tensor modulated
+resonance) a través de los parámetros w_z4 y dw_z4.
+
+Las expresiones simbólicas se simplifican y exportan a archivos LaTeX
+para su inclusión en la memoria del TFG.
+"""
+
 from hamiltonian import *
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor, apart
 import sympy as sp

@@ -1,4 +1,28 @@
-# ground truth
+"""
+Simulación de 'ground truth' para punto cuántico doble bajo excitación periódica.
+
+Este script realiza la simulación exacta (usando QuTiP) de la evolución temporal
+de un punto cuántico doble excitado con campos AC. Sirve como referencia para
+comparar con los métodos de Floquet implementados.
+
+Sistema físico:
+--------------
+Punto cuántico doble con 6 estados base:
+- |10,01⟩, |01,10⟩: Estados con un electrón en cada punto (carga 1,1)
+- |10,10⟩, |01,01⟩: Estados con igual spin (singlete/triplete)
+- |00,11⟩, |11,00⟩: Estados de carga doble (2,0) y (0,2)
+
+Las matrices de excitación V2 y V4 modulan los niveles de energía de los
+estados de carga, induciendo transiciones de Rabi entre estados de spin.
+
+Parámetros experimentales tomados de puntos cuánticos en Si/SiGe.
+
+Resultados:
+----------
+Genera gráficos de la probabilidad de transición vs tiempo usando el
+solucionador de Floquet de QuTiP (fsesolve).
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import qutip as qt

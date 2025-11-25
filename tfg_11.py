@@ -1,12 +1,21 @@
-# unitary transform, probability of being in ground state does not match the one in tfg_9.py (como deberia ser)
+"""
+Transformación unitaria y probabilidad de estado fundamental.
+
+Este script explora la transformación unitaria que lleva al picture
+de interacción para sistemas con excitación periódica.
+
+Nota: Los resultados de este script NO coinciden con tfg_9.py debido
+a aproximaciones en la transformación. Ver tfg_12.py para la versión
+corregida que sí reproduce los resultados.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import qutip as qt
 import numba as nb
 from numpy import conjugate as co
 from scipy.linalg import expm
-# import bessel functions
-from scipy.special import jv
+from scipy.special import jv  # Funciones de Bessel
 
 # units in 2pi * GHz, so timescale is 1ns
 G_R = 0 * 2*np.pi

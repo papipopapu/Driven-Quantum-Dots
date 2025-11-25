@@ -1,3 +1,20 @@
+"""
+Ejemplo de uso de teoría de Floquet bicromática.
+
+Este script demuestra el uso del módulo floquet_theory para calcular
+la evolución temporal de un sistema de dos niveles bajo excitación
+bicromática, comparando con la integración directa usando QuTiP.
+
+Contenido:
+---------
+1. Construcción del Hamiltoniano de Floquet bicromático
+2. Diagonalización y obtención de quasi-energías
+3. Cálculo del operador de evolución
+4. Comparación con QuTiP mesolve
+
+Este archivo sirve como ejemplo básico del formalismo de Floquet.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import qutip as qt

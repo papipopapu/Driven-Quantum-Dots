@@ -15,17 +15,15 @@ Este repositorio contiene el código del Trabajo de Fin de Grado (TFG) que estud
 
 ### Teoría de Floquet
 
-Para un Hamiltoniano periódico en el tiempo H(t) = H(t+T), el teorema de Floquet garantiza que las soluciones de la ecuación de Schrödinger tienen la forma:
+Para un Hamiltoniano periódico en el tiempo $H(t) = H(t+T)$, el teorema de Floquet garantiza que las soluciones de la ecuación de Schrödinger tienen la forma:
 
-```
-|ψ(t)⟩ = exp(-iε_α t/ℏ) |φ_α(t)⟩
-```
+$$|\psi(t)\rangle = e^{-i\varepsilon_\alpha t/\hbar} |\phi_\alpha(t)\rangle$$
 
 donde:
-- `ε_α` son las **quasi-energías de Floquet**
-- `|φ_α(t)⟩` son los **modos de Floquet** (periódicos con periodo T)
+- $\varepsilon_\alpha$ son las **quasi-energías de Floquet**
+- $|\phi_\alpha(t)\rangle$ son los **modos de Floquet** (periódicos con periodo $T$)
 
-El **Hamiltoniano de Floquet** H_F actúa en un espacio extendido que incluye los modos de Fourier, permitiendo tratar el problema dependiente del tiempo como un problema de autovalores estático.
+El **Hamiltoniano de Floquet** $H_F$ actúa en un espacio extendido que incluye los modos de Fourier, permitiendo tratar el problema dependiente del tiempo como un problema de autovalores estático.
 
 ### Sistema físico
 
@@ -36,11 +34,10 @@ El sistema estudiado consiste en un **punto cuántico doble** con:
 - Excitación externa con campos AC
 
 El Hamiltoniano base tiene la estructura:
-```
-H(t) = H₀ + V₁·cos(ω₁t) + V₂·cos(ω₂t)
-```
 
-donde las matrices de acoplamiento V representan la modulación de los niveles de energía.
+$$H(t) = H_0 + V_1 \cos(\omega_1 t) + V_2 \cos(\omega_2 t)$$
+
+donde las matrices de acoplamiento $V$ representan la modulación de los niveles de energía.
 
 ## Estructura del Proyecto
 
@@ -205,11 +202,11 @@ result = qt.mesolve(H, psi0_qt, tlist, [], [psi0_qt * psi0_qt.dag()],
 
 El proyecto demuestra:
 
-1. **Resonancias de Rabi**: Para frecuencias de excitación que cumplen condiciones de resonancia (ω ≈ ε_f - ε_i), se observan oscilaciones coherentes entre estados.
+1. **Resonancias de Rabi**: Para frecuencias de excitación que cumplen condiciones de resonancia ($\omega \approx \varepsilon_f - \varepsilon_i$), se observan oscilaciones coherentes entre estados.
 
 2. **Excitación bicromática**: Condiciones de resonancia extendidas:
-   - n₁ω₁ + n₂ω₂ = ε_f - ε_i
-   - n₁ω₁ - n₂ω₂ = ε_f - ε_i
+   - $n_1\omega_1 + n_2\omega_2 = \varepsilon_f - \varepsilon_i$
+   - $n_1\omega_1 - n_2\omega_2 = \varepsilon_f - \varepsilon_i$
 
 3. **Efecto g-TMR**: La modulación del tensor g produce correcciones adicionales a las frecuencias de Rabi.
 

@@ -1,4 +1,4 @@
-"# Teoría de Floquet en Puntos Cuánticos
+# Teoría de Floquet en Puntos Cuánticos
 
 ## Descripción
 
@@ -42,7 +42,7 @@ donde las matrices de acoplamiento $V$ representan la modulación de los niveles
 ## Estructura del Proyecto
 
 ```
-TFG/
+Driven-Quantum-Dots/
 ├── README.md                 # Este archivo
 ├── src/                      # Código fuente principal
 │   ├── __init__.py
@@ -55,14 +55,33 @@ TFG/
 │   │   └── __init__.py
 │   └── visualizations/       # Scripts de visualización
 │       └── __init__.py
-├── examples/                 # Ejemplos de uso
-├── data/                     # Datos y resultados
+├── scripts/                  # Scripts de simulación organizados
+│   ├── comparison/           # Comparación de métodos (QuTiP vs Floquet)
+│   │   ├── tfg_2.py          # Evolución temporal QuTiP vs Floquet bicromático
+│   │   └── tfg_9.py          # Ground truth con QuTiP
+│   ├── schrieffer_wolff/     # Transformaciones de Schrieffer-Wolff
+│   │   ├── tfg_5.py          # SW simbólica básica
+│   │   ├── tfg_6.py          # SW con acoplamientos dependientes del tiempo
+│   │   ├── tfg_7.py          # Análisis perturbativo de 3er orden con g-TMR
+│   │   ├── tfg_8.py          # Cálculo numérico de frecuencias de Rabi
+│   │   └── tfg_18.py         # Correcciones diagonales de SW
+│   ├── interaction_picture/  # Transformaciones unitarias
+│   │   ├── tfg_11.py         # Transformación unitaria (versión inicial)
+│   │   └── tfg_12.py         # Picture de interacción (versión corregida)
+│   ├── frequency_sweeps/     # Barridos de frecuencias
+│   │   ├── tfg_13.py         # Barrido con excitación P2
+│   │   └── tfg_14.py         # Barrido con excitación P4
+│   ├── block_diagonalization/# Diagonalización con pymablock
+│   │   ├── tfg_15.py         # Excitación monocromática
+│   │   ├── tfg_16.py         # Excitación bicromática
+│   │   └── tfg_19.py         # Bicromática con Bloch-Siegert mejorado
+│   └── optimization/         # Optimización de parámetros
+│       └── tfg_17.py         # Optimización g-TMR
 ├── floquet_theory.py         # [Legacy] Módulo original de Floquet
 ├── floquet_bi.py             # [Legacy] Floquet bicromático original
 ├── hamiltonian.py            # [Legacy] Hamiltoniano original
 ├── qutipDots.py              # [Legacy] Utilidades QuTiP original
-├── plots.py                  # [Legacy] Visualización de resultados
-└── tfg_*.py                  # [Legacy] Scripts de simulación numerados
+└── plots.py                  # [Legacy] Visualización de resultados
 ```
 
 ## Módulos Principales
@@ -92,23 +111,54 @@ Utilidades específicas para puntos cuánticos:
 - **`get_Liouville(Gamma, H)`**: Superoperador para dinámica disipativa
 - **`red_H`**: Reducción a subespacios
 
-## Scripts de Simulación (Legacy)
+## Scripts de Simulación
 
-Los archivos `tfg_*.py` contienen diferentes aspectos del estudio:
+Los scripts de simulación están organizados en el directorio `scripts/` según su funcionalidad:
+
+### Comparación de Métodos (`scripts/comparison/`)
 
 | Script | Descripción |
 |--------|-------------|
-| `tfg_2.py` | Evolución temporal con QuTiP vs Floquet |
-| `tfg_5.py`, `tfg_6.py` | Transformaciones de Schrieffer-Wolff simbólicas |
-| `tfg_7.py`, `tfg_8.py` | Análisis perturbativo de tercer orden |
-| `tfg_9.py` | Simulación de ground truth con QuTiP |
-| `tfg_11.py`, `tfg_12.py` | Transformación unitaria y picture de interacción |
-| `tfg_13.py` | Barrido de frecuencias (excitación con P2) |
-| `tfg_14.py` | Barrido de frecuencias (excitación con P4) |
-| `tfg_15.py` | Diagonalización de bloque con pymablock (monocromático) |
-| `tfg_16.py`, `tfg_19.py` | Diagonalización de bloque (bicromático) |
-| `tfg_17.py` | Optimización de parámetros |
-| `tfg_18.py` | Cálculos simbólicos adicionales |
+| `tfg_2.py` | Comparación de evolución temporal: QuTiP vs Floquet bicromático |
+| `tfg_9.py` | Simulación de ground truth para validación con QuTiP (fsesolve) |
+
+### Transformaciones de Schrieffer-Wolff (`scripts/schrieffer_wolff/`)
+
+| Script | Descripción |
+|--------|-------------|
+| `tfg_5.py` | Implementación simbólica básica de la transformación de SW |
+| `tfg_6.py` | SW con acoplamientos dependientes del tiempo (V2, V4) |
+| `tfg_7.py` | Análisis perturbativo de tercer orden con efectos g-TMR |
+| `tfg_8.py` | Cálculo numérico de frecuencias de Rabi con parámetros experimentales |
+| `tfg_18.py` | Correcciones diagonales de segundo orden (Bloch-Siegert) |
+
+### Picture de Interacción (`scripts/interaction_picture/`)
+
+| Script | Descripción |
+|--------|-------------|
+| `tfg_11.py` | Transformación unitaria al picture de interacción (versión inicial) |
+| `tfg_12.py` | Picture de interacción corregido (reproduce resultados de tfg_9) |
+
+### Barridos de Frecuencias (`scripts/frequency_sweeps/`)
+
+| Script | Descripción |
+|--------|-------------|
+| `tfg_13.py` | Barrido de frecuencias con modulación P2 (plunger 2) |
+| `tfg_14.py` | Barrido de frecuencias con modulación P4 (plunger 4) |
+
+### Diagonalización de Bloques con pymablock (`scripts/block_diagonalization/`)
+
+| Script | Descripción |
+|--------|-------------|
+| `tfg_15.py` | Frecuencias de Rabi para excitación monocromática |
+| `tfg_16.py` | Frecuencias de Rabi para excitación bicromática |
+| `tfg_19.py` | Versión final con cálculo mejorado de Bloch-Siegert |
+
+### Optimización (`scripts/optimization/`)
+
+| Script | Descripción |
+|--------|-------------|
+| `tfg_17.py` | Optimización de parámetros g-TMR para ajustar datos experimentales |
 
 ## Dependencias
 
@@ -128,8 +178,8 @@ scienceplots>=1.0  # Opcional, para estilo de gráficos
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/papipopapu/TFG.git
-cd TFG
+git clone https://github.com/papipopapu/Driven-Quantum-Dots.git
+cd Driven-Quantum-Dots
 
 # Instalar dependencias
 pip install numpy scipy matplotlib qutip numba sympy tqdm
@@ -156,7 +206,7 @@ U = 619 * 2*np.pi       # Interacción de Coulomb
 e = 442 * 2*np.pi       # Detuning de carga
 
 # Hamiltoniano estático (6x6 para punto cuántico doble)
-H0 = np.array([...])  # Ver tfg_9.py para la forma completa
+H0 = np.array([...])  # Ver scripts/comparison/tfg_9.py para la forma completa
 
 # Matriz de acoplamiento
 V = np.array([...])  # Excitación en los estados de carga
@@ -224,4 +274,4 @@ Este proyecto es parte de un Trabajo de Fin de Grado académico.
 
 ## Contacto
 
-Para preguntas sobre el código o la física, contactar al autor del TFG." 
+Para preguntas sobre el código o la física, contactar al autor del TFG.

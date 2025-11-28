@@ -12,7 +12,7 @@ Estas correcciones son importantes para calcular el desplazamiento
 de Bloch-Siegert de forma analítica.
 """
 
-from hamiltonian import *
+from src.core import c_internal, delta_site, split_c_list, calc_vac, conjugate, calc_Hamiltonian, Space
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor, apart
 import sympy as sp
 import numpy as np

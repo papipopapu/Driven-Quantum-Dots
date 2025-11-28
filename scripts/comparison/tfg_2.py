@@ -19,7 +19,7 @@ es la diferencia de energía entre estados del sistema no perturbado.
 import numpy as np
 import matplotlib.pyplot as plt
 import qutip as qt
-from floquet_theory import *
+from src.core import floquet_bichrom, floquet_mono, get_U, get_P, get_U_mono, get_P_mono
 from tqdm import tqdm
 # hbar = 1
 dwz = 1.0

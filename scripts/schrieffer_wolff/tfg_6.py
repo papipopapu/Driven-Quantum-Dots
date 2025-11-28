@@ -9,7 +9,7 @@ Incluye cálculos simbólicos de los elementos del Hamiltoniano de Floquet
 en el espacio extendido con índices (α, n₂, n₄).
 """
 
-from hamiltonian import *
+from src.core import c_internal, delta_site, split_c_list, calc_vac, conjugate, calc_Hamiltonian, Space
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor, apart
 import numpy as np
 from numpy import conjugate as co

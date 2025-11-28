@@ -16,7 +16,7 @@ Los valores numéricos corresponden a:
 - Amplitud de excitación: ε_{P2}, ε_{P4}
 """
 
-from hamiltonian import *
+from src.core import c_internal, delta_site, split_c_list, calc_vac, conjugate, calc_Hamiltonian, Space
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor, apart
 import sympy as sp
 import numpy as np

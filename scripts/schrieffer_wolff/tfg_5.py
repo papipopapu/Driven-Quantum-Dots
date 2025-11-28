@@ -20,7 +20,7 @@ Este script calcula las correcciones al Hamiltoniano de 4 estados (spin)
 debido al acoplamiento con los 2 estados de carga (reservorio).
 """
 
-from hamiltonian import *
+from src.core import c_internal, delta_site, split_c_list, calc_vac, conjugate, calc_Hamiltonian, Space
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor
 import numpy as np
 from numpy import conjugate as co

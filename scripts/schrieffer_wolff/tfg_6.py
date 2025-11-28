@@ -13,7 +13,6 @@ from src.core import FloquetSW, generate_ls_indices
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor, apart
 import numpy as np
 from numpy import conjugate as co
-from tqdm import tqdm
 t = Symbol(r't')
 Om = Symbol(r'\Omega')
 w_z = Symbol(r'\omega_z')

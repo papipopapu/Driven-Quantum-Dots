@@ -20,11 +20,10 @@ Este script calcula las correcciones al Hamiltoniano de 4 estados (spin)
 debido al acoplamiento con los 2 estados de carga (reservorio).
 """
 
-from src.core import c_internal, delta_site, split_c_list, calc_vac, conjugate, calc_Hamiltonian, Space
+from src.core import SW_transform_2
 from sympy import Symbol, init_printing, latex, Matrix, simplify, collect, expand, cancel, factor
 import numpy as np
 from numpy import conjugate as co
-from tqdm import tqdm
 t = Symbol(r't')
 Om = Symbol(r'\Omega')
 w_z = Symbol(r'\omega_z')
@@ -48,26 +47,6 @@ H_A = np.array([
     [0      , dw_z   , co(G_L)  , G_R     ],
     [G_R    , G_L    , w_z     , 0        ],
     [co(G_L), co(G_R), 0        , -w_z    ]])
-
-def SW_transform_2(H, A_idcs, B_idcs):
-    #H_sw = np.copy(H)
-    H_sw = np.zeros(H.shape, dtype=object)
-    for m in tqdm(range(len(A_idcs))):
-        for mp in range(len(A_idcs)):
-            for l in range(len(B_idcs)):
-                
-                Efact_m = 1/(H[A_idcs[m], A_idcs[m]] - H[B_idcs[l], B_idcs[l]])
-                Efact_mp = 1/(H[A_idcs[mp], A_idcs[mp]] - H[B_idcs[l], B_idcs[l]])
-                Efact = Efact_m + Efact_mp
-                H_sw[A_idcs[m], A_idcs[mp]] += 1/2 * H[A_idcs[m], B_idcs[l]] * H[B_idcs[l], A_idcs[mp]] * Efact
- 
-    # for now lets just return the matrix in A basis
-    H_sw_A = np.zeros((len(A_idcs), len(A_idcs)), dtype=object)
-    for m in range(len(A_idcs)):
-        for mp in range(len(A_idcs)):
-            H_sw_A[m, mp] = H_sw[A_idcs[m], A_idcs[mp]]
-    
-    return Matrix(H_sw_A)
 
 H_sw = SW_transform_2(H, [0, 1, 2, 3], [4, 5])
 """ H_sw = simplify(SW_transform_2(H, [0, 1, 2, 3], [4, 5]))

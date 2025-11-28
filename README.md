@@ -48,6 +48,7 @@ Driven-Quantum-Dots/
 │   ├── __init__.py
 │   ├── core/                 # Módulos fundamentales
 │   │   ├── __init__.py
+│   │   ├── schrieffer_wolff.py  # Transformación de Schrieffer-Wolff
 │   │   ├── floquet.py        # Teoría de Floquet
 │   │   ├── hamiltonian.py    # Segunda cuantización
 │   │   └── quantum_dots.py   # Utilidades para QDs
@@ -84,6 +85,21 @@ Driven-Quantum-Dots/
 ```
 
 ## Módulos Principales
+
+### `src/core/schrieffer_wolff.py`
+
+Implementa la transformación de Schrieffer-Wolff, una técnica perturbativa fundamental para:
+- Proyectar Hamiltonianos a subespacios de baja energía
+- Calcular correcciones perturbativas de segundo y tercer orden
+- Derivar expresiones analíticas para frecuencias de Rabi y desplazamientos de Bloch-Siegert
+
+Funciones principales:
+
+- **`SW_transform_2(H, A_idcs, B_idcs)`**: Transformación de segundo orden estática
+- **`FloquetSW`**: Clase para transformaciones SW en el espacio de Floquet
+  - `SWF_2(m, mp, ls)`: Corrección de segundo orden en Floquet
+  - `SWF_3(m, mp, lsA, lsB, mppsA, mppsB)`: Corrección de tercer orden en Floquet
+- **`generate_ls_indices(base_n2n4_list, m, mp)`**: Genera índices de estados intermedios
 
 ### `src/core/floquet.py`
 

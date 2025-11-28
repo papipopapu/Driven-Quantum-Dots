@@ -29,6 +29,12 @@ from .hamiltonian import (
     Space,
 )
 
+from .schrieffer_wolff import (
+    SW_transform_2,
+    FloquetSW,
+    generate_ls_indices,
+)
+
 # qutip es una dependencia opcional
 try:
     from .quantum_dots import (
@@ -62,6 +68,10 @@ __all__ = [
     'conjugate',
     'calc_Hamiltonian',
     'Space',
+    # schrieffer_wolff
+    'SW_transform_2',
+    'FloquetSW',
+    'generate_ls_indices',
 ]
 
 # Añadir exports de quantum_dots solo si qutip está disponible

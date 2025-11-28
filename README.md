@@ -48,43 +48,58 @@ Driven-Quantum-Dots/
 │   ├── __init__.py
 │   ├── core/                 # Módulos fundamentales
 │   │   ├── __init__.py
+│   │   ├── schrieffer_wolff.py  # Transformación de Schrieffer-Wolff
 │   │   ├── floquet.py        # Teoría de Floquet
 │   │   ├── hamiltonian.py    # Segunda cuantización
 │   │   └── quantum_dots.py   # Utilidades para QDs
 │   ├── simulations/          # Scripts de simulación
-│   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   └── examples/         # Ejemplos de uso
+│   │       ├── __init__.py
+│   │       └── floquet_bichrom_example.py  # Ejemplo de Floquet bicromático
 │   └── visualizations/       # Scripts de visualización
-│       └── __init__.py
-├── scripts/                  # Scripts de simulación organizados
-│   ├── comparison/           # Comparación de métodos (QuTiP vs Floquet)
-│   │   ├── tfg_2.py          # Evolución temporal QuTiP vs Floquet bicromático
-│   │   └── tfg_9.py          # Ground truth con QuTiP
-│   ├── schrieffer_wolff/     # Transformaciones de Schrieffer-Wolff
-│   │   ├── tfg_5.py          # SW simbólica básica
-│   │   ├── tfg_6.py          # SW con acoplamientos dependientes del tiempo
-│   │   ├── tfg_7.py          # Análisis perturbativo de 3er orden con g-TMR
-│   │   ├── tfg_8.py          # Cálculo numérico de frecuencias de Rabi
-│   │   └── tfg_18.py         # Correcciones diagonales de SW
-│   ├── interaction_picture/  # Transformaciones unitarias
-│   │   ├── tfg_11.py         # Transformación unitaria (versión inicial)
-│   │   └── tfg_12.py         # Picture de interacción (versión corregida)
-│   ├── frequency_sweeps/     # Barridos de frecuencias
-│   │   ├── tfg_13.py         # Barrido con excitación P2
-│   │   └── tfg_14.py         # Barrido con excitación P4
-│   ├── block_diagonalization/# Diagonalización con pymablock
-│   │   ├── tfg_15.py         # Excitación monocromática
-│   │   ├── tfg_16.py         # Excitación bicromática
-│   │   └── tfg_19.py         # Bicromática con Bloch-Siegert mejorado
-│   └── optimization/         # Optimización de parámetros
-│       └── tfg_17.py         # Optimización g-TMR
-├── floquet_theory.py         # [Legacy] Módulo original de Floquet
-├── floquet_bi.py             # [Legacy] Floquet bicromático original
-├── hamiltonian.py            # [Legacy] Hamiltoniano original
-├── qutipDots.py              # [Legacy] Utilidades QuTiP original
-└── plots.py                  # [Legacy] Visualización de resultados
+│       ├── __init__.py
+│       └── rabi_heatmaps.py  # Mapas de calor de frecuencias de Rabi
+└── scripts/                  # Scripts de simulación del TFG
+    ├── comparison/           # Comparación de métodos (QuTiP vs Floquet)
+    │   ├── tfg_2.py          # Evolución temporal QuTiP vs Floquet bicromático
+    │   └── tfg_9.py          # Ground truth con QuTiP
+    ├── schrieffer_wolff/     # Transformaciones de Schrieffer-Wolff
+    │   ├── tfg_5.py          # SW simbólica básica
+    │   ├── tfg_6.py          # SW con acoplamientos dependientes del tiempo
+    │   ├── tfg_7.py          # Análisis perturbativo de 3er orden con g-TMR
+    │   ├── tfg_8.py          # Cálculo numérico de frecuencias de Rabi
+    │   └── tfg_18.py         # Correcciones diagonales de SW
+    ├── interaction_picture/  # Transformaciones unitarias
+    │   ├── tfg_11.py         # Transformación unitaria (versión inicial)
+    │   └── tfg_12.py         # Picture de interacción (versión corregida)
+    ├── frequency_sweeps/     # Barridos de frecuencias
+    │   ├── tfg_13.py         # Barrido con excitación P2
+    │   └── tfg_14.py         # Barrido con excitación P4
+    ├── block_diagonalization/# Diagonalización con pymablock
+    │   ├── tfg_15.py         # Excitación monocromática
+    │   ├── tfg_16.py         # Excitación bicromática
+    │   └── tfg_19.py         # Bicromática con Bloch-Siegert mejorado
+    └── optimization/         # Optimización de parámetros
+        └── tfg_17.py         # Optimización g-TMR
 ```
 
 ## Módulos Principales
+
+### `src/core/schrieffer_wolff.py`
+
+Implementa la transformación de Schrieffer-Wolff, una técnica perturbativa fundamental para:
+- Proyectar Hamiltonianos a subespacios de baja energía
+- Calcular correcciones perturbativas de segundo y tercer orden
+- Derivar expresiones analíticas para frecuencias de Rabi y desplazamientos de Bloch-Siegert
+
+Funciones principales:
+
+- **`SW_transform_2(H, A_idcs, B_idcs)`**: Transformación de segundo orden estática
+- **`FloquetSW`**: Clase para transformaciones SW en el espacio de Floquet
+  - `SWF_2(m, mp, ls)`: Corrección de segundo orden en Floquet
+  - `SWF_3(m, mp, lsA, lsB, mppsA, mppsB)`: Corrección de tercer orden en Floquet
+- **`generate_ls_indices(base_n2n4_list, m, mp)`**: Genera índices de estados intermedios
 
 ### `src/core/floquet.py`
 

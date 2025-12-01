@@ -277,11 +277,6 @@ El proyecto demuestra:
 
 4. **Corrección de Bloch-Siegert**: Desplazamientos de frecuencia por efectos contra-rotantes.
 
-## Referencias
-
-- Shirley, J. H. (1965). *Solution of the Schrödinger Equation with a Hamiltonian Periodic in Time*. Physical Review.
-- Sambe, H. (1973). *Steady States and Quasienergies of a Quantum-Mechanical System in an Oscillating Field*. Physical Review A.
-- Artículos experimentales sobre puntos cuánticos dobles en GaAs/AlGaAs y Si/SiGe.
 
 ## Licencia
 
